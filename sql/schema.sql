@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS ctf_manager
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+USE ctf_manager;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    rol ENUM('user', 'admin') NOT NULL DEFAULT 'user',
+    puntos INT NOT NULL DEFAULT 0,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
